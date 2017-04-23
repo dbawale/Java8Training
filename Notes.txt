@@ -16,6 +16,7 @@ Three ways to implement an interface:
 
 2. Create an anonymous class
 Advantage: Code that filters (in this case) is in the same place as other code
+Disadvantage: Code feels cluttered
         Example:
          FileFilter javaFileFilter = new FileFilter(){
              @Override
@@ -23,4 +24,9 @@ Advantage: Code that filters (in this case) is in the same place as other code
              return pathname.getName().endsWith(".java");
             }
          };
-3. 
+Lambda expressions make this piece of code more readable, make instances of anonymous classes easier to write
+
+3. Lambda Expressions:
+        Example:
+        FileFilter javaFileFilter = (File file) -> file.getName().endsWith(".java");
+

@@ -3,13 +3,7 @@ import java.io.File;
 
 public class Main {
     public static void main(String[] args){
-//        JavaFileFilter javaFileFilter = new JavaFileFilter();
-        FileFilter javaFileFilter = new FileFilter(){
-            @Override
-            public boolean accept(File pathname) {
-                return pathname.getName().endsWith(".java");
-            }
-        };
+        FileFilter javaFileFilter = (File file) -> file.getName().endsWith(".java");
         File dir = new File("C:\\Users\\Deven Bawale\\Documents\\Java Practice\\src");
         File[] javaFiles = dir.listFiles(javaFileFilter);
         if (javaFiles != null) {
@@ -20,6 +14,7 @@ public class Main {
     }
 }
 
+//Complete Implementation
 //class JavaFileFilter implements FileFilter{
 //
 //    /**
@@ -32,3 +27,11 @@ public class Main {
 //        return f.getName().endsWith(".java");
 //    }
 //}
+
+// JavaFileFilter javaFileFilter = new JavaFileFilter();
+//FileFilter javaFileFilter = new FileFilter(){
+//        @Override
+//        public boolean accept(File pathname) {
+//            return pathname.getName().endsWith(".java");
+//        }
+//    };
