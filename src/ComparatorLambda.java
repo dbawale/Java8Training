@@ -1,12 +1,15 @@
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class ComparatorLambda {
     public static void main(String[] args){
         List<String> list = Arrays.asList("****","***","**");
-        Collections.sort(list,(String s1, String s2) ->
+        Collections.sort(list,(s1, s2) ->
             Integer.compare(s1.length(),s2.length()));
+
+        //Comparator<String> comparator = (s1, s2) -> Integer.compare(s1.length(),s2.length());
 
         for(String s : list){
             System.out.println(s);

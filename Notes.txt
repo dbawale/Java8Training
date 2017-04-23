@@ -29,4 +29,82 @@ Lambda expressions make this piece of code more readable.
 3. Lambda Expressions:
         Example:
         FileFilter javaFileFilter = (File file) -> file.getName().endsWith(".java");
+   Use of a lambda function as a higher order function (here the lambda is not assigned to anything explicitly,
+   only passed as an argument to a function. The type is inferred automatically)
+    Thread t = new Thread(() -> {
+               for(int i=0;i<3;i++){
+                   System.out.println("Hello world from thread " + Thread.currentThread().getName());
+               }
+           });
+           t.start();
+           t.join();
+
+In other words, a lambda expression is another way to provide the implementation of a Functional interface. One
+advantage that it gives over explicitly providing implementations is clean code.
+It is not necessary to explicitly state the types of the parameters of a lambda expression.  They can be inferred from
+the lambda expression. For example:
+Collections.sort(list,(s1, s2) -> Integer.compare(s1.length(),s2.length())); can be written instead of
+Collections.sort(list,( String s1, String s2) -> Integer.compare(s1.length(),s2.length()));
+
+Three questions about lambdas:
+1. What is the type of a lambda expression? Ans: A functional interface. A functional interface is an interface with
+only one abstract method. In Java 8, abstract methods are not the only piece of code (apart from constants)
+that can be put in an interface definition. The notion of functional interfaces is new in Java 8. In this case,
+the methods from the Object class don't count.
+
+2. Can a lambda be put in a variable? Ans: Yes. That way, they can be taken as method parameters and returned by
+methods.
+
+3. Is a lambda expression an object? Ans: A lambda expression is created without using <<new>>. The overhead involved
+in creating "real" objects is not present while creating lambda expressions. As a result, performance is much better
+while using lambda expressions. A lambda expression is not an object (but it's still recorded as an object in the JVM).
+It's called "object without it's own identity." You shouldn't call the methods of Object class like toString() or
+equals() on a lambda expression.
+
+
+FUNCTIONAL INTERFACES IN JAVA 8
+
+There are four main categories of functional interfaces in Java 8's java.util.function:
+1. Supplier
+    @FuntionalInterface
+    public interface Supplier<T>{
+        T get();
+    }
+
+2. Consumer
+    @FunctionalInterface
+    public interface Consumer<T>{
+        void accept(T t);
+    }
+
+    @FunctionalInterface
+    public interface BiConsumer<T,U>{
+        void accept(T t, U u);
+    }
+
+3. Predicate
+    @FunctionalInterface
+    public interface Predicate<T>{
+        boolean test(T t);
+    }
+
+    @FunctionalInterface
+    public interface BiPredicate<T, U>{
+        boolean test(T t, U u);
+    }
+
+4. Function
+    @FunctionalInterface
+    public interface Function<T,R>{
+        R apply (T t);
+    }
+
+    @FunctionalInterface
+    public interface BiFunction<T, U, R>{
+        R apply(T t, U u);
+    }
+
+
+
+
 
