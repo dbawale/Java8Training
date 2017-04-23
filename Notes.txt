@@ -1,0 +1,26 @@
+Java 8
+
+LAMBDA EXPRESSIONS
+
+Three ways to implement an interface:
+1. Create an (explicit) class that implements that interface.
+        Example:
+        class JavaFileFilter implements FileFilter{
+            @Override
+            public boolean accept(File f) {
+                return f.getName().endsWith(".java");
+            }
+        }
+
+        FileFilter javaFileFilter = new JavaFileFilter();
+
+2. Create an anonymous class
+Advantage: Code that filters (in this case) is in the same place as other code
+        Example:
+         FileFilter javaFileFilter = new FileFilter(){
+             @Override
+             public boolean accept(File pathname) {
+             return pathname.getName().endsWith(".java");
+            }
+         };
+3. 
