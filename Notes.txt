@@ -107,5 +107,6 @@ There are four main categories of functional interfaces in Java 8's java.util.fu
 
 Default methods in Java 8:
 An interface can specify concrete implementations of methods with the 'default' keyword. This can help change existing
-interfaces without breaking existing classes that implement them.
+interfaces without breaking existing classes that implement them. An example of a default method is the forEach method
+in the Iterable interface.
 
