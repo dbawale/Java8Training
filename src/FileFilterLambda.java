@@ -1,7 +1,7 @@
 import java.io.FileFilter;
 import java.io.File;
 
-public class Main {
+public class FileFilterLambda {
     public static void main(String[] args){
         FileFilter javaFileFilter = (File file) -> file.getName().endsWith(".java");
         File dir = new File("C:\\Users\\Deven Bawale\\Documents\\Java Practice\\src");
