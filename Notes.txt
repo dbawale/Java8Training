@@ -110,3 +110,27 @@ An interface can specify concrete implementations of methods with the 'default' 
 interfaces without breaking existing classes that implement them. An example of a default method is the forEach method
 in the Iterable interface.
 
+
+STREAM API
+
+Mapping: Takes a list of a given type and returns a list of another type (with same length)
+Filtering: Takes a list of a given type and returns a list of the same type (with different lengths)
+Reduction: Equivalent to SQL aggregation, such as sum, max, min, average
+
+Stream: A stream is a typed interface. (So there can be streams of strings, integers, any objects).
+A stream gives ways to efficiently process data. A stream is NOT a collection.
+A stream object does not hold any data. It should not change the data it processes but this rule is not enforced
+anywhere. (A custom implementation of Stream may break this rule but it might lead to issues like data inconsistency
+and deadlock)
+
+The map and filter methods can be applied on Streams.
+Intermediary methods are methods that take a Stream object and return a Stream object. They are marked so on the
+Stream Javadoc. Intermediary methods are just declarations; they are not executed unless a non-intermediary method
+is called on a Stream.
+
+Example of a Stream:
+List<String> stringList = Arrays.asList("one", "two", "three", "four", "five");
+Stream<String> stream = stringList.stream();
+        stream
+                .filter(Predicate.isEqual("two").or(Predicate.isEqual("three")))
+                .forEach(System.out::println);
