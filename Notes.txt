@@ -134,3 +134,4 @@ Stream<String> stream = stringList.stream();
         stream
                 .filter(Predicate.isEqual("two").or(Predicate.isEqual("three")))
                 .forEach(System.out::println);
+
