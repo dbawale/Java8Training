@@ -138,14 +138,18 @@ Stream<String> stream = stringList.stream();
 Reducing:
 There are two kinds of reductions included in the Stream API.
 1. Aggregation: min, max, sum etc
-2.
+2. Boolean reductions: allMatch, noneMatch, anyMatch
+3. Reductions that return an optional: findFirst, findAny
 
 An identity element is required if the stream is empty. If a stream is empty, then the reduction of that stream
 is the identity element.
 If a stream has only one element, the reduction of that stream is that element combined with the identity element that's
 supplied.
 
+Reductions are terminal operations; they trigger the processing of data
+
 Optional:
+Default values can't always be defined.
 Take the example of a 'max' reduction. It may or may not return a value, if the max of that stream is
 undefined (as in the case of an empty stream) then it may return null. In that case, the programmer will have to take
 care to check for null pointer exceptions (which is a pain point). A better way is to return an object of the
@@ -158,3 +162,4 @@ compile.
 For example, a max operation on a stream cannot be applied to an Integer directly, it has to return an Optional<Integer>
 and the compiler will enforce this.
 
+The map/filter/reduce operations are evaluated in one pass over the data.
